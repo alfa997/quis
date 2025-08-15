@@ -1,1 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lini Masa Peradaban Kuno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .timeline-line {
+            background: linear-gradient(90deg, #f59e0b, #d97706, #92400e);
+            height: 4px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-dot:hover {
+            transform: scale(1.2);
+        }
+        
+        .timeline-card {
+            transform: translateX(-100px);
+            opacity: 0.4;
+            animation: slideIn 4s ease-in-out infinite;
+            transition: all 0.8s ease;
+            filter: blur(1px);
+            font-size: 1.1rem;
+        }
+        
+        .timeline-card.focused {
+            animation: none;
+            transform: translateX(0) scale(1.15);
+            opacity: 1;
+            filter: blur(0);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            z-index: 100;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        @keyframes slideIn {
+            0% { transform: translateX(-100px); opacity: 0.3; }
+            50% { transform: translateX(20px); opacity: 0.6; }
+            100% { transform: translateX(-100px); opacity: 0.3; }
+        }
+        
+        .civilization-egypt {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+        
+        .civilization-greece {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        
+        .civilization-rome {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-50 to-orange-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-amber-800 mb-4">
+                🏛️ Lini Masa Peradaban Kuno
+            </h1>
+            <p class="text-lg text-amber-700 max-w-2xl mx-auto">
+                Jelajahi perjalanan peradaban manusia dari 3.000 SM hingga 500 M. 
+                Klik pada titik-titik untuk mempelajari peristiwa bersejarah yang mengubah dunia!
+            </p>
+            <div class="mt-6 flex justify-center space-x-6">
+                <div class="flex items-center">
+                    <div class="w-4 h-4 civilization-egypt rounded-full mr-2"></div>
+                    <span class="text-sm font-medium text-amber-700">Mesir</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 civilization-greece rounded-full mr-2"></div>
+                    <span class="text-sm font-medium text-amber-700">Yunani</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 civilization-rome rounded-full mr-2"></div>
+                    <span class="text-sm font-medium text-amber-700">Romawi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative max-w-6xl mx-auto mb-[800px]">
+            <!-- Timeline Line -->
+            <div class="timeline-line w-full mb-8"></div>
+            
+            <!-- Timeline Events -->
+            <div class="relative">
+                <!-- Event 1: Mesir Kuno -->
+                <div class="absolute" style="left: 2%;">
+                    <div class="timeline-dot civilization-egypt w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card1')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-yellow-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">🏺</span>
+                                <h3 class="font-bold text-amber-800 text-xl">3100 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Penyatuan Mesir</h4>
+                            <p class="text-base text-gray-600 mb-4">Raja Menes menyatukan Mesir Atas dan Bawah</p>
+                            
+                            <div id="card1" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Peristiwa bersejarah ini menandai dimulainya Dinasti Pertama Mesir. 
+                                        Raja Menes (juga dikenal sebagai Narmer) berhasil menyatukan dua kerajaan 
+                                        yang terpisah menjadi satu peradaban besar.
+                                    </p>
+                                    <div class="bg-yellow-50 p-3 rounded">
+                                        <h5 class="font-semibold text-yellow-800 mb-2">Dampak Penting:</h5>
+                                        <ul class="text-sm text-yellow-700 space-y-1">
+                                            <li>• Dimulainya era Firaun</li>
+                                            <li>• Pembangunan Memphis sebagai ibu kota</li>
+                                            <li>• Sistem hieroglif berkembang</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card1')" 
+                                    class="mt-3 text-yellow-600 hover:text-yellow-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2: Piramida Giza -->
+                <div class="absolute" style="left: 16%;">
+                    <div class="timeline-dot civilization-egypt w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card2')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-yellow-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">🔺</span>
+                                <h3 class="font-bold text-amber-800 text-xl">2580 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Piramida Agung Giza</h4>
+                            <p class="text-base text-gray-600 mb-4">Pembangunan keajaiban dunia kuno</p>
+                            
+                            <div id="card2" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Piramida Agung Giza dibangun untuk Firaun Khufu dan merupakan satu-satunya 
+                                        keajaiban dunia kuno yang masih berdiri hingga kini. Tingginya mencapai 146 meter!
+                                    </p>
+                                    <div class="bg-yellow-50 p-3 rounded">
+                                        <h5 class="font-semibold text-yellow-800 mb-2">Fakta Menarik:</h5>
+                                        <ul class="text-sm text-yellow-700 space-y-1">
+                                            <li>• Terdiri dari 2,3 juta blok batu</li>
+                                            <li>• Dibangun selama 20 tahun</li>
+                                            <li>• Presisi arsitektur yang luar biasa</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card2')" 
+                                    class="mt-3 text-yellow-600 hover:text-yellow-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Demokrasi Athena -->
+                <div class="absolute" style="left: 32%;">
+                    <div class="timeline-dot civilization-greece w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card3')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-blue-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">🏛️</span>
+                                <h3 class="font-bold text-blue-800 text-xl">508 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Demokrasi Athena</h4>
+                            <p class="text-base text-gray-600 mb-4">Kleisthenes memperkenalkan sistem demokrasi</p>
+                            
+                            <div id="card3" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Kleisthenes, yang dikenal sebagai "Bapak Demokrasi", memperkenalkan sistem 
+                                        pemerintahan di mana warga negara dapat berpartisipasi dalam pengambilan keputusan.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded">
+                                        <h5 class="font-semibold text-blue-800 mb-2">Inovasi Penting:</h5>
+                                        <ul class="text-sm text-blue-700 space-y-1">
+                                            <li>• Sistem voting untuk warga</li>
+                                            <li>• Pembagian kekuasaan</li>
+                                            <li>• Konsep kewarganegaraan</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card3')" 
+                                    class="mt-3 text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4: Alexander Agung -->
+                <div class="absolute" style="left: 48%;">
+                    <div class="timeline-dot civilization-greece w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card4')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-blue-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">⚔️</span>
+                                <h3 class="font-bold text-blue-800 text-xl">336 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Alexander Agung</h4>
+                            <p class="text-base text-gray-600 mb-4">Penaklukan terbesar dalam sejarah</p>
+                            
+                            <div id="card4" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Alexander Agung menciptakan salah satu kerajaan terbesar dalam sejarah, 
+                                        membentang dari Yunani hingga India, menyebarkan budaya Helenistik.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded">
+                                        <h5 class="font-semibold text-blue-800 mb-2">Pencapaian:</h5>
+                                        <ul class="text-sm text-blue-700 space-y-1">
+                                            <li>• Kerajaan dari Mesir hingga India</li>
+                                            <li>• Penyebaran budaya Yunani</li>
+                                            <li>• Pendirian kota Alexandria</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card4')" 
+                                    class="mt-3 text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5: Republik Romawi -->
+                <div class="absolute" style="left: 64%;">
+                    <div class="timeline-dot civilization-rome w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card5')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-red-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">🦅</span>
+                                <h3 class="font-bold text-red-800 text-xl">509 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Republik Romawi</h4>
+                            <p class="text-base text-gray-600 mb-4">Dimulainya era republik di Roma</p>
+                            
+                            <div id="card5" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Setelah menggulingkan raja terakhir, Roma menjadi republik dengan sistem 
+                                        pemerintahan yang melibatkan Senat dan konsul-konsul terpilih.
+                                    </p>
+                                    <div class="bg-red-50 p-3 rounded">
+                                        <h5 class="font-semibold text-red-800 mb-2">Sistem Pemerintahan:</h5>
+                                        <ul class="text-sm text-red-700 space-y-1">
+                                            <li>• Senat sebagai badan penasihat</li>
+                                            <li>• Konsul sebagai pemimpin eksekutif</li>
+                                            <li>• Sistem checks and balances</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card5')" 
+                                    class="mt-3 text-red-600 hover:text-red-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 6: Julius Caesar -->
+                <div class="absolute" style="left: 78%;">
+                    <div class="timeline-dot civilization-rome w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card6')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-red-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">👑</span>
+                                <h3 class="font-bold text-red-800 text-xl">49 SM</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Julius Caesar</h4>
+                            <p class="text-base text-gray-600 mb-4">Menyeberangi Sungai Rubicon</p>
+                            
+                            <div id="card6" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Julius Caesar menyeberangi Sungai Rubicon dengan pasukannya, memulai 
+                                        perang saudara yang akan mengubah Roma dari republik menjadi kekaisaran.
+                                    </p>
+                                    <div class="bg-red-50 p-3 rounded">
+                                        <h5 class="font-semibold text-red-800 mb-2">Dampak Sejarah:</h5>
+                                        <ul class="text-sm text-red-700 space-y-1">
+                                            <li>• Akhir era Republik Romawi</li>
+                                            <li>• Dimulainya Kekaisaran Romawi</li>
+                                            <li>• Reformasi kalender Julian</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card6')" 
+                                    class="mt-3 text-red-600 hover:text-red-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 7: Jatuhnya Roma -->
+                <div class="absolute" style="left: 92%;">
+                    <div class="timeline-dot civilization-rome w-6 h-6 rounded-full cursor-pointer pulse-animation shadow-lg" 
+                         onclick="toggleCard('card7')"></div>
+                    <div class="mt-12 relative z-10">
+                        <div class="timeline-card bg-white rounded-lg shadow-lg p-6 w-96 border-l-4 border-red-500">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">🏛️</span>
+                                <h3 class="font-bold text-red-800 text-xl">476 M</h3>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-3 text-lg">Jatuhnya Roma Barat</h4>
+                            <p class="text-base text-gray-600 mb-4">Berakhirnya Kekaisaran Romawi Barat</p>
+                            
+                            <div id="card7" class="card-expand">
+                                <div class="border-t pt-3">
+                                    <p class="text-base text-gray-700 mb-4">
+                                        Kaisar terakhir Roma Barat, Romulus Augustulus, diturunkan oleh Odoacer, 
+                                        menandai berakhirnya era kuno dan dimulainya Abad Pertengahan.
+                                    </p>
+                                    <div class="bg-red-50 p-3 rounded">
+                                        <h5 class="font-semibold text-red-800 mb-2">Penyebab Keruntuhan:</h5>
+                                        <ul class="text-sm text-red-700 space-y-1">
+                                            <li>• Invasi suku-suku barbar</li>
+                                            <li>• Krisis ekonomi dan politik</li>
+                                            <li>• Perpecahan kekaisaran</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleCard('card7')" 
+                                    class="mt-3 text-red-600 hover:text-red-800 text-sm font-medium">
+                                Fokus Kartu 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Quiz Section -->
+        <div class="mt-32 bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-amber-800 mb-6 text-center">🧠 Ujian Peradaban Kuno - 10 Soal</h2>
+            <div class="mb-4 bg-amber-100 p-3 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <span class="font-medium text-amber-800">Soal <span id="current-question">1</span> dari 10</span>
+                    <span class="font-medium text-amber-800">Skor: <span id="score">0</span></span>
+                </div>
+                <div class="w-full bg-amber-200 rounded-full h-2 mt-2">
+                    <div id="progress-bar" class="bg-amber-500 h-2 rounded-full transition-all duration-300" style="width: 10%"></div>
+                </div>
+            </div>
+            
+            <div id="quiz-container">
+                <div class="quiz-question bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-4" id="question-text">Siapa yang dikenal sebagai "Bapak Demokrasi"?</h3>
+                    <div class="space-y-3" id="answers-container">
+                        <button onclick="selectAnswer(this, false)" 
+                                class="answer-btn w-full text-left p-3 rounded-lg border-2 border-gray-200 hover:border-amber-300 transition-colors">
+                            A. Alexander Agung
+                        </button>
+                        <button onclick="selectAnswer(this, true)" 
+                                class="answer-btn w-full text-left p-3 rounded-lg border-2 border-gray-200 hover:border-amber-300 transition-colors">
+                            B. Kleisthenes
+                        </button>
+                        <button onclick="selectAnswer(this, false)" 
+                                class="answer-btn w-full text-left p-3 rounded-lg border-2 border-gray-200 hover:border-amber-300 transition-colors">
+                            C. Julius Caesar
+                        </button>
+                        <button onclick="selectAnswer(this, false)" 
+                                class="answer-btn w-full text-left p-3 rounded-lg border-2 border-gray-200 hover:border-amber-300 transition-colors">
+                            D. Firaun Khufu
+                        </button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button id="next-btn" onclick="nextQuestion()" 
+                                class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-medium opacity-50 cursor-not-allowed" 
+                                disabled>
+                            Soal Berikutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data with 10 questions
+        const quizData = [
+            {
+                question: "Siapa yang dikenal sebagai 'Bapak Demokrasi'?",
+                answers: ["Alexander Agung", "Kleisthenes", "Julius Caesar", "Firaun Khufu"],
+                correct: 1,
+                explanation: "Kleisthenes memperkenalkan sistem pemerintahan demokratis di Athena pada 508 SM."
+            },
+            {
+                question: "Kapan Piramida Agung Giza dibangun?",
+                answers: ["3100 SM", "2580 SM", "1500 SM", "1000 SM"],
+                correct: 1,
+                explanation: "Piramida Agung Giza dibangun sekitar 2580 SM untuk Firaun Khufu."
+            },
+            {
+                question: "Siapa yang menyatukan Mesir Atas dan Mesir Bawah?",
+                answers: ["Cleopatra", "Tutankhamun", "Raja Menes", "Ramses II"],
+                correct: 2,
+                explanation: "Raja Menes (Narmer) menyatukan kedua kerajaan Mesir pada 3100 SM."
+            },
+            {
+                question: "Apa yang terjadi ketika Julius Caesar menyeberangi Sungai Rubicon?",
+                answers: ["Dimulainya perang saudara", "Pembangunan Colosseum", "Penaklukan Mesir", "Pendirian Roma"],
+                correct: 0,
+                explanation: "Penyeberangan Rubicon memulai perang saudara yang mengubah Roma dari republik menjadi kekaisaran."
+            },
+            {
+                question: "Kerajaan Alexander Agung membentang dari mana hingga mana?",
+                answers: ["Roma hingga Mesir", "Yunani hingga India", "Mesir hingga Persia", "Athena hingga Sparta"],
+                correct: 1,
+                explanation: "Alexander Agung menciptakan kerajaan dari Yunani hingga India, menyebarkan budaya Helenistik."
+            },
+            {
+                question: "Kapan Republik Romawi dimulai?",
+                answers: ["753 SM", "509 SM", "264 SM", "49 SM"],
+                correct: 1,
+                explanation: "Republik Romawi dimulai pada 509 SM setelah menggulingkan raja terakhir."
+            },
+            {
+                question: "Apa yang menjadi ciri khas sistem pemerintahan Athena kuno?",
+                answers: ["Monarki absolut", "Sistem kasta", "Demokrasi langsung", "Kediktatoran militer"],
+                correct: 2,
+                explanation: "Athena terkenal dengan sistem demokrasi langsung di mana warga dapat berpartisipasi dalam pengambilan keputusan."
+            },
+            {
+                question: "Siapa kaisar terakhir Kekaisaran Romawi Barat?",
+                answers: ["Julius Caesar", "Augustus", "Romulus Augustulus", "Constantine"],
+                correct: 2,
+                explanation: "Romulus Augustulus adalah kaisar terakhir yang diturunkan pada 476 M oleh Odoacer."
+            },
+            {
+                question: "Berapa lama waktu yang dibutuhkan untuk membangun Piramida Agung?",
+                answers: ["10 tahun", "20 tahun", "30 tahun", "50 tahun"],
+                correct: 1,
+                explanation: "Piramida Agung Giza dibangun selama sekitar 20 tahun dengan 2,3 juta blok batu."
+            },
+            {
+                question: "Apa yang menandai berakhirnya era kuno dan dimulainya Abad Pertengahan?",
+                answers: ["Kematian Alexander Agung", "Pembakaran Perpustakaan Alexandria", "Jatuhnya Roma Barat", "Penyebaran Kristen"],
+                correct: 2,
+                explanation: "Jatuhnya Kekaisaran Romawi Barat pada 476 M menandai berakhirnya era kuno dan dimulainya Abad Pertengahan."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        let currentFocusedCard = null;
+
+        function toggleCard(cardId) {
+            const cardElement = document.getElementById(cardId);
+            const timelineCard = cardElement.closest('.timeline-card');
+            const button = cardElement.parentElement.querySelector('button');
+            
+            // Reset all cards first
+            document.querySelectorAll('.timeline-card').forEach(card => {
+                card.classList.remove('focused');
+                const btn = card.querySelector('button');
+                btn.innerHTML = 'Fokus Kartu 🎯';
+            });
+            
+            // If clicking the same card that was focused, just reset
+            if (currentFocusedCard === cardId) {
+                currentFocusedCard = null;
+                return;
+            }
+            
+            // Focus on the new card
+            timelineCard.classList.add('focused');
+            button.innerHTML = 'Kartu Terfokus ✨';
+            currentFocusedCard = cardId;
+        }
+
+        function selectAnswer(button, isCorrect) {
+            // Remove previous selections
+            document.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-100', 'border-blue-500');
+            });
+            
+            // Highlight selected answer
+            button.classList.add('bg-blue-100', 'border-blue-500');
+            selectedAnswer = isCorrect;
+            
+            // Enable next button
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function nextQuestion() {
+            // Check if answer is correct
+            if (selectedAnswer === true) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            
+            currentQuestion++;
+            
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            
+            // Update progress
+            document.getElementById('current-question').textContent = currentQuestion + 1;
+            document.getElementById('progress-bar').style.width = ((currentQuestion + 1) / quizData.length * 100) + '%';
+            
+            // Update question
+            document.getElementById('question-text').textContent = question.question;
+            
+            // Update answers
+            const answersContainer = document.getElementById('answers-container');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'answer-btn w-full text-left p-3 rounded-lg border-2 border-gray-200 hover:border-amber-300 transition-colors';
+                button.textContent = String.fromCharCode(65 + index) + '. ' + answer;
+                button.onclick = () => selectAnswer(button, index === question.correct);
+                answersContainer.appendChild(button);
+            });
+            
+            // Reset next button
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = true;
+            nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Lihat Hasil' : 'Soal Berikutnya';
+            
+            selectedAnswer = null;
+        }
+
+        function showResults() {
+            const percentage = Math.round((score / quizData.length) * 100);
+            let grade, message, emoji;
+            
+            if (percentage >= 90) {
+                grade = "Luar Biasa!";
+                message = "Anda benar-benar menguasai sejarah peradaban kuno!";
+                emoji = "🏆";
+            } else if (percentage >= 70) {
+                grade = "Bagus Sekali!";
+                message = "Pengetahuan sejarah Anda sangat baik!";
+                emoji = "🎉";
+            } else if (percentage >= 50) {
+                grade = "Cukup Baik";
+                message = "Terus belajar untuk meningkatkan pengetahuan sejarah Anda!";
+                emoji = "📚";
+            } else {
+                grade = "Perlu Belajar Lagi";
+                message = "Jangan menyerah! Pelajari lagi materi di timeline di atas.";
+                emoji = "💪";
+            }
+            
+            document.getElementById('quiz-container').innerHTML = `
+                <div class="text-center py-8">
+                    <div class="text-6xl mb-4">${emoji}</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-2">${grade}</h3>
+                    <p class="text-lg text-gray-700 mb-4">Skor Anda: ${score}/${quizData.length} (${percentage}%)</p>
+                    <p class="text-gray-600 mb-6">${message}</p>
+                    <div class="space-x-4">
+                        <button onclick="restartQuiz()" 
+                                class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-medium">
+                            Ulangi Ujian
+                        </button>
+                        <button onclick="scrollToTimeline()" 
+                                class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium">
+                            Pelajari Lagi
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            selectedAnswer = null;
+            document.getElementById('score').textContent = '0';
+            loadQuestion();
+        }
+
+        function scrollToTimeline() {
+            document.querySelector('.timeline-line').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add smooth scrolling when clicking timeline dots
+        document.querySelectorAll('.timeline-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+    
+    <!-- Customer Service Chat Widget -->
+    <script src="//code.tidio.co/hngwbwfu8glbxcemqnez4ksog493gxw3.js" async></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f8d6b6c44c7d50',t:'MTc1NTI2MjQ0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
 
